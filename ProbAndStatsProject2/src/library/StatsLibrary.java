@@ -245,6 +245,49 @@ public class StatsLibrary {
 	}
 	
 	/**
+	 * Finds the hypergeometric distribution of a problem given numbers, r, y, N, and n.
+	 * 
+	 * @param r - the total amount of the group we want
+	 * @param y - how many of (r) we want
+	 * @param N - total amount of everything
+	 * @param n - total amount of everything we selected
+	 * @return result - returns the result of the hypergeometric distribution.
+	 */
+	public double hypergeometricDistribution(int N, int n, int r, int y)
+	{
+		double result = 0.0;
+		
+		int NminusR = N-r;
+		int nMinusY = n-y;
+		
+		double numerator = Double.valueOf(findCombinations(r + "", y + "")) * Double.valueOf(findCombinations(NminusR + "", nMinusY + ""));
+		double denominator = Double.valueOf(findCombinations(N + "", n + ""));
+		
+		result = numerator/denominator;
+		
+		return result;
+	}
+	
+	/**
+	 * This will find the result of a poissonDistribution problem given the y and lambda
+	 * 
+	 * @param y - given number of events happening.
+	 * @param lambda - the specified time period where 1 event happens y times.
+	 * @return result - the result of the distribution.
+	 */
+	public double poissonDistribution(int y, int lambda)
+	{
+		double result = 0.0;
+		
+		int numerator = (int) Math.pow(lambda, y);
+		int denominator = Integer.valueOf(findFactorial(y + ""));
+		
+		result = ((double)numerator/(double)denominator) * Math.pow(Math.E, 0-lambda);
+		
+		return result;
+	}
+	
+	/**
 	 * Tests every method from this class and prints out those trials into the console. This method is much longer than it needs to be, but it allows only 2 lines in the main method.
 	 */
 	public void testEverything()
@@ -267,18 +310,26 @@ public class StatsLibrary {
 		Collections.sort(sortedArr);
 		
 		//ArrayListMethods
-		System.out.println("The unsorted arrayList is: " + arr.toString()+ "\n");
+		System.out.println("The unsorted arrayList is: " + arr.toString());
 		System.out.println("The sorted arrayList is: " + sortedArr.toString() + "\n");
-		System.out.println("The mean of this arrayList is: " + tester.findMean(arr)+ "\n");
-		System.out.println("The median of this arrayList is: " + tester.findMedian(arr)+ "\n");
+		System.out.println("The mean of this arrayList is: " + tester.findMean(arr));
+		System.out.println("The median of this arrayList is: " + tester.findMedian(arr));
 		System.out.println("The mode of this arrayList is: " + tester.findMode(arr)+ "\n");
 		System.out.println("The Standard Deviation of this arrayList is: " + tester.standardDeviation(arr)+ "\n");
 		
 		//Permutations/Combinations Methods (These use BigInteger, and Strings are inputs to allows insanely big number)
 		System.out.println("The factorial of " + number + " is: " + tester.findFactorial(number) + "\n");
+		
 		System.out.println("The number of Permutations is: " + tester.findPermutations("52", "2"));
-		System.out.println("The number of Combinations is: " + tester.findCombinations("52", "2"));
+		System.out.println("The number of Combinations is: " + tester.findCombinations("52", "2") + "\n");
+		
+		//Distributions
 		System.out.println("The binomial distribution is " + tester.binomialDistributionExact(5, 3, 0.75));
-		System.out.println("The binomial distribution is " + tester.binomialDistributionGreater(5, 3, 0.75));
+		System.out.println("The binomial distribution is " + tester.binomialDistributionGreater(5, 3, 0.75) + "\n");
+		
+		System.out.println("The geometric distribution is " + tester.geometricDistribution(0.45, 3));
+		System.out.println("The hypergeometric distribution is " + tester.hypergeometricDistribution(20, 5, 6, 4) + "\n");
+		
+		System.out.println("The poisson distribution is " + tester.poissonDistribution(0, 1));
 	}
 }
