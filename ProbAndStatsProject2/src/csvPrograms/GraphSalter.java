@@ -78,6 +78,6 @@ public class GraphSalter
 	
 	public static void main(String[] args)
 	{
-		salt(10);
+		salt(50);
 	}
 }
