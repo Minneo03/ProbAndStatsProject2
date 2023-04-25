@@ -5,11 +5,16 @@ package library;
  * @author Ryan Minneo
  * @version 1.0
  */
-public class StatsLibraryTester {
-	
+public class StatsLibraryTester 
+{
+	/**
+	 * Classic main method
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
-		StatsLibrary tester = new StatsLibrary();
+		StatsLibraryProject2 tester = new StatsLibraryProject2();
 		
 		tester.testEverything();
 	}
