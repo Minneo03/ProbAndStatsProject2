@@ -1,7 +1,5 @@
 package csvPrograms;
 
-import java.io.FileNotFoundException;
-
 /**
  * This is the tester class for the Java CSV Plotter, Salter, and Smoother Programs. 
  * 
@@ -18,7 +16,7 @@ public class JavaCSVTester
 	public static void main(String[] args)
 	{
 		//This method will create a CSV with x values between -25 and 25, increments of 1. With the determined function X^2 + 2x + 1.
-		GraphFunction.printToFile(-25, 25, 1);
+		GraphPlotter.printToFile(-25, 25, 1);
 		
 		//This method will salt the data of the CSV produced in the previous function. The amount of salt is determined by the parameter.
 		GraphSalter.salt(50);

@@ -11,43 +11,8 @@ import java.util.ArrayList;
  * @author Ryan Minneo
  * @version 1.1
  */
-public class GraphFunction
+public class GraphPlotter
 {
-	private int x;
-	private int y;
-	
-	/**
-	 * Constructor for a GraphFunction. I should've made another class called 'points' and have this class be called 'plotter'
-	 * 
-	 * @param xInput - the inputted x value
-	 * @param yInput - the inputted y value
-	 */
-	public GraphFunction(int xInput, int yInput)
-	{
-		x = xInput;
-		y = yInput;
-	}
-	
-	/**
-	 * Classic Getter for X
-	 * 
-	 * @return x - the x value of the GraphFunction
-	 */
-	public int getX()
-	{
-		return x;
-	}
-	
-	/**
-	 * Classic Getter for Y
-	 * 
-	 * @return y - the y value of the GraphFunction
-	 */
-	public int getY()
-	{
-		return y;
-	}
-	
 	/**
 	 * This method will create an arraylist of GraphFunctions, where x is minimum to maximum at intervals of "interval". Then it will output those GraphFunctions (more accurately 'data points') to a csvFile using printwriter. 
 	 * 
@@ -59,7 +24,7 @@ public class GraphFunction
 	 */
 	public static void printToFile(int min, int max, int interval)
 	{
-		ArrayList<GraphFunction> points = new ArrayList<GraphFunction>();
+		ArrayList<Integer> points = new ArrayList<Integer>();
 
 	 	int funcX = 0;
 	 	int funcY = 0;
@@ -84,16 +49,17 @@ public class GraphFunction
 				//Change this line to make a new f(x)
 				funcY = (int) (Math.pow(funcX, 2) + 2 * funcX + 1);
 				
-				points.add(new GraphFunction(funcX, funcY));
+				points.add(funcX);
+				points.add(funcY);
 			}
 			try
 			{
-				File csvFile = new File("GraphFunction.csv");
+				File csvFile = new File("GraphPlot.csv");
 				PrintWriter out = new PrintWriter(csvFile);
 				
-				for(GraphFunction graph : points)
+				for(int i = 0; i < points.size()-1; i+=2)
 				{
-					out.printf("%d, %d\n", graph.getX(), graph.getY());
+					out.printf("%d, %d\n", points.get(i), points.get(i+1));
 				}
 				
 				out.close();

@@ -20,7 +20,7 @@ public class GraphSalter
 	 */
 	public static void salt(int range)
 	{
-		String file = "C:/Users/failg/git/ProbAndStatsProject2/ProbAndStatsProject2/GraphFunction.csv";
+		String file = "C:/Users/failg/git/ProbAndStatsProject2/ProbAndStatsProject2/GraphPlot.csv";
 		BufferedReader reader = null;
 		String line;
 		int tmp;
@@ -28,7 +28,7 @@ public class GraphSalter
 		
 		try
 		{
-			File saltedCsvFile = new File("SaltedGraphFunction.csv");
+			File saltedCsvFile = new File("SaltedGraphPlot.csv");
 			PrintWriter out = new PrintWriter(saltedCsvFile);
 			
 			reader = new BufferedReader(new FileReader(file));

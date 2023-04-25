@@ -25,7 +25,7 @@ public class GraphSmoother
 	 */
 	public static void smooth(int windowValue, int numTimes)
 	{
-		String file = "C:/Users/failg/git/ProbAndStatsProject2/ProbAndStatsProject2/SaltedGraphFunction.csv";
+		String file = "C:/Users/failg/git/ProbAndStatsProject2/ProbAndStatsProject2/SaltedGraphPlot.csv";
 		BufferedReader reader = null;
 		String line;
 		int tmp = 0;
@@ -34,7 +34,7 @@ public class GraphSmoother
 		
 		try
 		{
-			File smoothedCsvFile = new File("SmoothedGraphFunction.csv");
+			File smoothedCsvFile = new File("SmoothedGraphPlot.csv");
 			PrintWriter out = new PrintWriter(smoothedCsvFile);
 			
 			reader = new BufferedReader(new FileReader(file));
