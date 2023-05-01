@@ -89,7 +89,7 @@ public class ApiPSS
 		
 		DescriptiveStatistics stat = new DescriptiveStatistics(windowValue);
 		
-		for(int i = 0; i < xValues.length-1; i++)
+		for(int i = 0; i < xValues.length; i++)
 		{
 			int x = (int) (saltedData.getDataItem(i).getXValue());
 			stat.addValue(yValues[i]);
